@@ -2,7 +2,8 @@ const { Sequelize } = require('sequelize')
 
 const sequelize = new Sequelize('postgres', 'postgres', 'postgres', {
     host: 'localhost',
-    dialect: 'postgres'
+    dialect: 'postgres',
+    schema: 'MetalDetectorShop'
 });
 
 sequelize.authenticate()
