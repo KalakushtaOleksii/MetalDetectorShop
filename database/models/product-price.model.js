@@ -18,7 +18,7 @@ const ProductPrice = sequelize.define('ProductPrice', {
         productAttributesId: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            fieldName: 'product_attributes_id'
+            field: 'product_attributes_id'
         },
     },
     {

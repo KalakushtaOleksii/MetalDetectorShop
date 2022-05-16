@@ -10,7 +10,7 @@ const Frequency = sequelize.define('Frequency', {
         value_frequency: {
             type: DataTypes.STRING(50),
             allowNull: false,
-            fieldName: 'value_frequency',
+            field: 'value_frequency',
             validate: {
                 len: [1, 50],
             },

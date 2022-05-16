@@ -14,12 +14,12 @@ const CartItem = sequelize.define('CartItem', {
         cardId: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            fieldName: 'card_id',
+            field: 'card_id',
         },
         productAttributesId: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            fieldName: 'product_attributes_id',
+            field: 'product_attributes_id',
         },
     },
     {

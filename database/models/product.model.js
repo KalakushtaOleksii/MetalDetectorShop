@@ -10,7 +10,7 @@ const Product = sequelize.define('Product', {
         productName: {
             type: DataTypes.STRING,
             allowNull: false,
-            fieldName: 'product_name',
+            field: 'product_name',
             validate: {
                 len: [3, 100],
             },
@@ -22,7 +22,7 @@ const Product = sequelize.define('Product', {
         categoryId: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            fieldName: 'category_id',
+            field: 'category_id',
         },
     },
     {

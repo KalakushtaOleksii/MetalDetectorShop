@@ -10,22 +10,22 @@ const ProductAttribute = sequelize.define('ProductAttribute', {
         trademarkId: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            fieldName: 'trademark_id',
+            field: 'trademark_id',
         },
         countryIid: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            fieldName: 'country_id',
+            field: 'country_id',
         },
         productId: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            fieldName: 'product_id',
+            field: 'product_id',
         },
         frequencyListId: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            fieldName: 'frequency_list_id'
+            field: 'frequency_list_id'
         }
     },
     {

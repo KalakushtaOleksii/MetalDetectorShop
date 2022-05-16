@@ -14,12 +14,12 @@ const OrderDetail = sequelize.define('OrderDetail', {
         productId: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            fieldName: 'product_id',
+            field: 'product_id',
         },
         orderId: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            fieldName: 'order_id',
+            field: 'order_id',
         },
     },
     {

@@ -10,7 +10,7 @@ const Storage = sequelize.define('Storage', {
         storageName: {
             type: DataTypes.STRING(100),
             allowNull: false,
-            fieldName: 'storage_name',
+            field: 'storage_name',
             validate: {
                 len: [3, 100],
             },

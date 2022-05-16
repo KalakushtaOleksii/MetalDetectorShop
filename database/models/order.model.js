@@ -14,7 +14,7 @@ const Order = sequelize.define('Order', {
         lastName: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            fieldName: 'user_id',
+            field: 'user_id',
         },
     },
     {

@@ -5,12 +5,12 @@ const StorageProductList = sequelize.define('StorageProductList', {
         productAttributesId: {
             type: DataTypes.INTEGER,
             primaryKey: true,
-            fieldName: 'product_attributes_id',
+            field: 'product_attributes_id',
         },
         storageId: {
             type: DataTypes.INTEGER,
             primaryKey: true,
-            fieldName: 'storage_id',
+            field: 'storage_id',
         },
         quantity: {
             type: DataTypes.INTEGER,

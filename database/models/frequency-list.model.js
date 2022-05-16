@@ -10,12 +10,12 @@ const FrequencyList = sequelize.define('FrequencyList', {
         productId: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            fieldName: 'product_id'
+            field: 'product_id'
         },
         frequencyId: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            fieldName: 'frequency_id'
+            field: 'frequency_id'
         },
     },
     {
