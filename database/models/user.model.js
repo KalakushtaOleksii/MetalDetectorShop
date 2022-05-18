@@ -10,6 +10,7 @@ const User = sequelize.define('User', {
         firstName: {
             type: DataTypes.STRING(50),
             allowNull: false,
+            field: 'first_name',
             validate: {
                 len: [3, 50],
             },
@@ -17,20 +18,27 @@ const User = sequelize.define('User', {
         lastName: {
             type: DataTypes.STRING(50),
             allowNull: false,
+            field: 'last_name',
             validate: {
                 len: [3, 50],
             },
         },
-        age: {
-            type: DataTypes.INTEGER,
+        dateOfBirth: {
+            type: DataTypes.DATE,
             allowNull: false,
+            field: 'date of birth'
         },
         email: {
             type: DataTypes.STRING,
             allowNull: false,
+            unique: true,
             validate: {
                 isEmail: true,
             },
+        },
+        password: {
+            type: DataTypes.STRING(32),
+            allowNull: false,
         },
     },
     {

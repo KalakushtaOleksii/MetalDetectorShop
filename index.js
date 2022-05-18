@@ -1,11 +1,14 @@
 const express = require('express')
-const bodyParser = require('body-parser')
+const { initUserRoutes } = require("./routes");
 
 const app = express()
-const port = 3000
+const port = 3003
 
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extend: true }))
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded());
+app.use(bodyParser.json());
+
+initUserRoutes(app)
 
 
 app.listen(port, () => {
