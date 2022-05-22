@@ -7,7 +7,7 @@ const Frequency = sequelize.define('Frequency', {
             primaryKey: true,
             autoIncrement: true,
         },
-        value_frequency: {
+        valueFrequency: {
             type: DataTypes.STRING(50),
             allowNull: false,
             field: 'value_frequency',

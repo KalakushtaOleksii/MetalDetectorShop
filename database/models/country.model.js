@@ -10,6 +10,7 @@ const Country = sequelize.define('Country', {
         name: {
             type: DataTypes.STRING(50),
             allowNull: false,
+            unique: true,
             validate: {
                 len: [3, 50],
             },

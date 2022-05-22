@@ -35,8 +35,12 @@ ProductAttribute.belongsTo(Trademark, { foreignKey: 'trademark_id' })
 //
 
 // product_attributes - frequency M2M
-ProductAttribute.hasMany(Frequency, { foreignKey: 'frequency_list_id' })
-Frequency.belongsTo(ProductAttribute)
+ProductAttribute.hasMany(FrequencyList, { foreignKey: 'id_product' })
+FrequencyList.belongsTo(ProductAttribute,{foreignKey: 'id_product'})
+//
+// frequency - FrequencyList M2M
+Frequency.hasMany(FrequencyList, { foreignKey: 'id_frequency' })
+FrequencyList.belongsTo(Frequency,{foreignKey: 'id_frequency'})
 //
 
 // product_price - product_attributes M2O
