@@ -53,7 +53,7 @@ ProductAttribute.hasMany(Storage)
 Storage.belongsTo(ProductAttribute)
 //
 
-// product - orders M2M
+// product.is - orders M2M
 Product.hasMany(Order)
 Order.belongsTo(Product)
 //
