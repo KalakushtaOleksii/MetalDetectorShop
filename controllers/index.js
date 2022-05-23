@@ -4,6 +4,9 @@ const trademarkControllers = require('./trademark')
 const frequencyControllers = require('./frequency')
 const productCategoryControllers = require('./product_category')
 const productControllers = require('./product')
+const storageControllers = require('./storage')
+const storageProductListControllers = require('./storage_product_list')
+const productAttributesControllers = require('./product_attributes')
 
 
 
@@ -14,4 +17,7 @@ module.exports = {
     ...frequencyControllers,
     ...productCategoryControllers,
     ...productControllers,
+    ...storageControllers,
+    ...storageProductListControllers,
+    ...productAttributesControllers,
 }

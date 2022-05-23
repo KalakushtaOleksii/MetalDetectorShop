@@ -1,14 +1,15 @@
-const { Product }  = require('../../database/models')
+const { Product, ProductCategory }  = require('../../database/models')
 const { responseService } = require('../../services')
 
 async function productListController(reg, res) {
     const {
         productName,
         image,
-        categoryId,
     } = reg.query
 
-    const result = await Product.findAll()
+    const result = await Product.findAll({
+        include: ProductCategory,
+    })
 
     responseService.sendSuccessResponse(
         res,

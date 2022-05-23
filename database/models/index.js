@@ -49,9 +49,12 @@ ProductPrice.belongsTo(ProductAttribute, { foreignKey: 'product_attributes_id' }
 //
 
 // product_attributes - storage M2M
-ProductAttribute.hasMany(Storage)
-Storage.belongsTo(ProductAttribute)
+ProductAttribute.hasMany(StorageProductList, { foreignKey: 'product_attributes_id'})
+StorageProductList.belongsTo(ProductAttribute, { foreignKey: 'product_attributes_id'})
 //
+
+Storage.hasMany(StorageProductList, { foreignKey: 'storage_id' })
+StorageProductList.belongsTo(Storage, { foreignKey: 'storage_id' })
 
 // product.is - orders M2M
 Product.hasMany(Order)
