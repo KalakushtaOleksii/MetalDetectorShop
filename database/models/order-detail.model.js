@@ -11,10 +11,10 @@ const OrderDetail = sequelize.define('OrderDetail', {
             type: DataTypes.INTEGER,
             allowNull: false,
         },
-        productId: {
+        productAttributesId: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            field: 'product_id',
+            field: 'product_attributes_id',
         },
         orderId: {
             type: DataTypes.INTEGER,

@@ -1,16 +1,16 @@
 const  { DataTypes } = require('sequelize')
 const  { sequelize } = require('../index')
 
-const FrequencyList = sequelize.define('FrequencyList', {
+const FrequencyValue = sequelize.define('FrequencyValue', {
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true,
         },
-        productId: {
+        productAttributesId: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            field: 'product_id'
+            field: 'product_attributes_id'
         },
         frequencyId: {
             type: DataTypes.INTEGER,
@@ -19,8 +19,8 @@ const FrequencyList = sequelize.define('FrequencyList', {
         },
     },
     {
-        tableName: 'frequency_list',
+        tableName: 'frequency_value',
     },
 )
 
-module.exports = FrequencyList
+module.exports = FrequencyValue

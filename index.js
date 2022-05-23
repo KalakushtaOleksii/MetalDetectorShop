@@ -7,6 +7,12 @@ const initProductRoutes =require('./routes/product.routes')
 const initStorageRoutes = require('./routes/storage.routes')
 const initStorageProductListRoutes = require('./routes/storage_product_list.routes')
 const initProductAttributesRoutes = require('./routes/product_attributes.routes')
+const initProductPriceRoutes = require('./routes/product_price.routes')
+const initOrderRoutes = require('./routes/order.routs')
+const initOrderDetailsRoutes = require('./routes/order_details.routs')
+const initCartRoutes = require('./routes/cart.routes')
+const initCartItemRoutes = require('./routes/cart_item.routes')
+const initFrequencyValueRoutes = require('./routes/frequency_value.routes')
 
 const app = express()
 const port = 3003
@@ -25,7 +31,12 @@ initProductRoutes(app)
 initStorageRoutes(app)
 initStorageProductListRoutes(app)
 initProductAttributesRoutes(app)
-
+initProductPriceRoutes(app)
+initOrderRoutes(app)
+initOrderDetailsRoutes(app)
+initCartRoutes(app)
+initCartItemRoutes(app)
+initFrequencyValueRoutes(app)
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)

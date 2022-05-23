@@ -2,7 +2,7 @@ const Cart = require('./cart.model')
 const CartItem = require('./cart-item.model')
 const Country = require('./country.model')
 const Frequency = require('./frequency.model')
-const FrequencyList = require('./frequency-list.model')
+const FrequencyValue = require('./frequency_value.model')
 const Order = require('./order.model')
 const OrderDetail = require('./order-detail.model')
 const Product = require('./product.model')
@@ -35,12 +35,12 @@ ProductAttribute.belongsTo(Trademark, { foreignKey: 'trademark_id' })
 //
 
 // product_attributes - frequency M2M
-ProductAttribute.hasMany(FrequencyList, { foreignKey: 'id_product' })
-FrequencyList.belongsTo(ProductAttribute,{foreignKey: 'id_product'})
+ProductAttribute.hasMany(FrequencyValue, { foreignKey: 'product_attributes_id' })
+FrequencyValue.belongsTo(ProductAttribute,{foreignKey: 'product_attributes_id'})
 //
 // frequency - FrequencyList M2M
-Frequency.hasMany(FrequencyList, { foreignKey: 'id_frequency' })
-FrequencyList.belongsTo(Frequency,{foreignKey: 'id_frequency'})
+Frequency.hasMany(FrequencyValue, { foreignKey: 'frequency_id' })
+FrequencyValue.belongsTo(Frequency,{foreignKey: 'frequency_id'})
 //
 
 // product_price - product_attributes M2O
@@ -56,14 +56,24 @@ StorageProductList.belongsTo(ProductAttribute, { foreignKey: 'product_attributes
 Storage.hasMany(StorageProductList, { foreignKey: 'storage_id' })
 StorageProductList.belongsTo(Storage, { foreignKey: 'storage_id' })
 
-// product.is - orders M2M
-Product.hasMany(Order)
-Order.belongsTo(Product)
+// product_attributes - orders M2M
+ProductAttribute.hasMany(OrderDetail, { foreignKey: 'product_attributes_id' })
+OrderDetail.belongsTo(ProductAttribute, { foreignKey: 'product_attributes_id' })
+//
+
+//
+Order.hasMany(OrderDetail, { foreignKey: 'order_id' })
+OrderDetail.belongsTo(Order, { foreignKey: 'order_id' })
 //
 
 // product_attributes - cart M2M
-ProductAttribute.hasMany(Cart)
-Cart.belongsTo(ProductAttribute)
+ProductAttribute.hasMany(CartItem, { foreignKey: 'product_attributes_id' })
+CartItem.belongsTo(ProductAttribute, { foreignKey: 'product_attributes_id' })
+//
+
+//
+Cart.hasMany(CartItem, { foreignKey: 'card_id' })
+CartItem.belongsTo(Cart, { foreignKey: 'card_id' })
 //
 
 // orders - users M2O
@@ -82,7 +92,7 @@ module.exports = {
     CartItem,
     Country,
     Frequency,
-    FrequencyList,
+    FrequencyValue,
     Order,
     OrderDetail,
     Product,

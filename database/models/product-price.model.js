@@ -1,5 +1,6 @@
 const  { DataTypes } = require('sequelize')
 const  { sequelize } = require('../index')
+const { DATE } = require('sequelize')
 
 const ProductPrice = sequelize.define('ProductPrice', {
         id: {
@@ -14,6 +15,13 @@ const ProductPrice = sequelize.define('ProductPrice', {
         date: {
             type: DataTypes.DATE,
             allowNull: false,
+            validate: {
+                customValidator(value) {
+                    if (new Date(value) > new Date()) {
+                        throw new Error("invalid date");
+                    }
+                }
+            },
         },
         productAttributesId: {
             type: DataTypes.INTEGER,

@@ -7,6 +7,11 @@ const initProductRoutes = require('./product.routes')
 const initStorageRoutes = require('./storage.routes')
 const initStorageProductListRoutes = require('./storage_product_list.routes')
 const initProductAttributesRoutes = require('./product_attributes.routes')
+const initProductPriceRoutes = require('./product_price.routes')
+const initOrderDetailsRoutes = require('./order_details.routs')
+const initCartRoutes = require('./cart.routes')
+const initCartItemRoutes = require('./cart_item.routes')
+const initFrequencyValueRoutes = require('./frequency_value.routes')
 
 module.exports = {
     initUserRoutes,
@@ -18,4 +23,9 @@ module.exports = {
     initStorageRoutes,
     initStorageProductListRoutes,
     initProductAttributesRoutes,
+    initProductPriceRoutes,
+    initOrderDetailsRoutes,
+    initCartRoutes,
+    initCartItemRoutes,
+    initFrequencyValueRoutes,
 }
