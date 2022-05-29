@@ -1,27 +1,33 @@
 const { ProductAttribute } = require('../../database/models')
+const { ProductPrice } = require('../../database/models')
 const { responseService, } = require('../../services')
 
 async function addProductAttributeController(reg, res) {
     const {
-        trademarkId,
         countryIid,
         productId,
         frequencyListId,
+        price,
     } = reg.body
 
 
     try {
-        await ProductAttribute.create({
-            trademarkId,
+        const attribute = await ProductAttribute.create({
             countryIid,
             productId,
             frequencyListId,
         })
 
+        await ProductPrice.create({
+            price,
+            date: new Date(),
+            productAttributesId: attribute.id,
+        })
+
         responseService.sendSuccessResponse(res, {
-                trademarkId,
                 countryIid,
                 productId,
+                price,
             },
             201,
         )

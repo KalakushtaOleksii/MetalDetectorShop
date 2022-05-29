@@ -3,6 +3,7 @@ const { responseService, } = require('../../services')
 
 async function addStorageProductListController(reg, res) {
     const {
+        productAttributesId,
         storageId,
         quantity,
     } = reg.body
@@ -10,6 +11,7 @@ async function addStorageProductListController(reg, res) {
 
     try {
         await StorageProductList.create({
+            productAttributesId,
             storageId,
             quantity,
         })

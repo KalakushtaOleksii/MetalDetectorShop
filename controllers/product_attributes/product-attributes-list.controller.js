@@ -3,7 +3,6 @@ const { responseService } = require('../../services')
 
 async function productAttributesListController(reg, res) {
     const {
-        trademarkId,
         countryIid,
         productId,
     } = reg.query
@@ -14,7 +13,6 @@ async function productAttributesListController(reg, res) {
 
     })
 
-    console.log('result')
 
 
     responseService.sendSuccessResponse(

@@ -2,7 +2,7 @@ const addStorageProductListController  = require('../controllers/storage_product
 const storageProductListController =  require('../controllers/storage_product_list/storage-product-list.controller')
 
 function initStorageProductListRoutes(app){
-    app.post('/add-product', addStorageProductListController)
+    app.post('/add-storage-product', addStorageProductListController)
 
     app.get('/product-list', storageProductListController)
 }

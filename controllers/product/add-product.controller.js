@@ -6,6 +6,7 @@ async function addProductController(reg, res) {
         productName,
         image,
         categoryId,
+        trademarkId,
     } = reg.body
 
 
@@ -14,12 +15,14 @@ async function addProductController(reg, res) {
             productName,
             image,
             categoryId,
+            trademarkId,
         })
 
         responseService.sendSuccessResponse(res, {
                 productName,
                 image,
                 categoryId,
+                trademarkId,
             },
             201,
         )

@@ -29,9 +29,9 @@ Country.hasMany(ProductAttribute, { foreignKey: 'country_id' })
 ProductAttribute.belongsTo(Country, { foreignKey: 'country_id' })
 //
 
-// trademarks - product_attributes O2M
-Trademark.hasMany(ProductAttribute, { foreignKey: 'trademark_id' })
-ProductAttribute.belongsTo(Trademark, { foreignKey: 'trademark_id' })
+// trademarks - product O2M
+Trademark.hasMany(Product, { foreignKey: 'trademark_id' })
+Product.belongsTo(Trademark, { foreignKey: 'trademark_id' })
 //
 
 // product_attributes - frequency M2M

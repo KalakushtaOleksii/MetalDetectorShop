@@ -7,11 +7,6 @@ const ProductAttribute = sequelize.define('ProductAttribute', {
             primaryKey: true,
             autoIncrement: true,
         },
-        trademarkId: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            field: 'trademark_id',
-        },
         countryIid: {
             type: DataTypes.INTEGER,
             allowNull: false,

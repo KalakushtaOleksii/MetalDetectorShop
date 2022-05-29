@@ -27,6 +27,11 @@ const Product = sequelize.define('Product', {
             allowNull: false,
             field: 'category_id',
         },
+        trademarkId: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            field: 'trademark_id',
+        },
     },
     {
         tableName: 'products',

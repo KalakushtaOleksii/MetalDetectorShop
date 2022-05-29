@@ -1,10 +1,11 @@
 const { StorageProductList }  = require('../../database/models')
 const { responseService } = require('../../services')
 
-async function storageProductListController(reg, res) {
+async function getProductListByStorageController(reg, res) {
     const {
-        productName,
-        image,
+        productAttributesId,
+        storageId,
+        quantity,
     } = reg.query
 
     const result = await StorageProductList.findAll({
@@ -17,4 +18,4 @@ async function storageProductListController(reg, res) {
     )
 }
 
-module.exports = storageProductListController
+module.exports = getProductListByStorageController
