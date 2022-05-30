@@ -1,33 +1,33 @@
 const Dto = require('../dto/index')
 const {Product, Frequency} = require("../database/models");
-function ProductResponseToProductDtoMapper(product, category, frequencies, price, trademark){
+function ProductResponseToProductDtoMapper(product){
     const result = Dto.ProductDto(
         product.dataValues.id,
         product.Product.productName,
         product.Product.image,
         Dto.CategoryDto(
-            category.dataValues.id,
-            category.dataValues.desc,
-            category.dataValues.name,
+            product.Product.ProductCategory.dataValues.id,
+            product.Product.ProductCategory.dataValues.desc,
+            product.Product.ProductCategory.dataValues.name,
         ),
         Dto.TrademarkDto(
-            trademark.dataValues.id,
-            trademark.dataValues.name,
+            product.Product.Trademark.dataValues.id,
+            product.Product.Trademark.dataValues.name,
         ),
         Dto.CountryDto(
             product.Country.id,
             product.Country.name,
         ),
-        frequencies.map((frequency) => {
+        product.FrequencyValues.map((frequency) => {
             return Dto.FrequencyDto(
                 frequency.Frequency.id,
                 frequency.Frequency.valueFrequency,
             )
         }),
-        price.dataValues.price,
+        product.ProductPrices[0].dataValues.price ??= 0,
     )
 
-    return result;
+    return result
 }
 
 module.exports = ProductResponseToProductDtoMapper

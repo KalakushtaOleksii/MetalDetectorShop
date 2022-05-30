@@ -5,6 +5,7 @@ const FrequencyDto = require('../dto/products/frequncy.dto')
 const TrademarkDto = require('../dto/products/trademark.dto')
 const StorageProductListByStorageDto = require('../dto/storage-product-list-by-storage.dto')
 
+
 module.exports = {
     ProductDto,
     CategoryDto,

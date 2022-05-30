@@ -1,7 +1,7 @@
 const { ProductAttribute, Trademark, Country, Product, Frequency, FrequencyValue, ProductCategory, ProductPrice}  = require('../../database/models')
 const ProductResponseToProductDtoMapper = require('../../mappers/product-response-to-product-dto.mapper')
 const { responseService } = require('../../services')
-const {Sequelize} = require("sequelize");
+const { Op } = require("sequelize")
 
 async function getProductAttributesListIdController(reg, res) {
     const {
@@ -9,41 +9,34 @@ async function getProductAttributesListIdController(reg, res) {
         productId,
     } = reg.query
 
+    let date
+    if (reg.query.date)
+        date = new Date(reg.query.date)
+    else
+        date = new Date()
+
     const result = await ProductAttribute.findOne({
         where: { id: reg.params.id},
         include: [
             Country,
-            Product,
+            {
+                model: Product,
+                include: [ProductCategory, Trademark]
+            },
+            {
+                model: FrequencyValue,
+                include: [Frequency]
+            },
+            {
+                model:ProductPrice,
+                where: {date: {[Op.lte]: date}},
+                order: [['date', 'DESC']],
+            },
         ]
 
     })
         .then( async (attribute) => {
-            attribute.id
-
-            const freq = await FrequencyValue.findAll({
-                where: {product_attributes_id: reg.params.id},
-                include: [Frequency]
-            })
-
-            const category = await ProductCategory.findOne({
-                where: {id: attribute.Product.dataValues.categoryId}
-            })
-
-            const trademark = await Trademark.findOne({
-                where: {id: attribute.Product.dataValues.trademarkId}
-            })
-
-            //const date_param = new Date(reg.params.date)
-
-            const price = await ProductPrice.findOne({
-                where: {
-                    product_attributes_id: reg.params.id,
-                    //date: {[Sequelize.lte]: date_param}
-                },
-                order: [['date', 'DESC' ]]
-            })
-
-            return ProductResponseToProductDtoMapper(attribute, category, freq, price, trademark)
+            return ProductResponseToProductDtoMapper(attribute)
         })
 
 

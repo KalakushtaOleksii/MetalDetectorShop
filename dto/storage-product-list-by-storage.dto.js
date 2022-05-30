@@ -1,8 +1,8 @@
-function StorageProductListByStorageDto(id, name, frequency, quantity, price){
+function StorageProductListByStorageDto(id, name, frequencies, quantity, price){
     return {
         id,
         name,
-        frequency,
+        frequencies,
         quantity,
         price,
     }
