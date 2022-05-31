@@ -1,0 +1,24 @@
+head
+    title Order List
+body
+    h1 Email - #{email}
+    each order in orderItems
+        h3 Order id - {#{order.id}}, order date - {#{order.date}}
+        table(border=1, cellpadding=6)
+            thead
+                tr
+                    th Name
+                    th Quantity
+                    th Price
+            tbody
+                each item in order.orderSubItems
+                    tr
+                        td= item.name
+                        td= item.quantity
+                        td= item.price
+
+        p Total price: #{order.totalPrice}
+        p
+        p
+        p
+        p

@@ -4,12 +4,12 @@ const { responseService, } = require('../../services')
 async function addProductPriceController(reg, res) {
     const {
         price,
-        date,
         productAttributesId,
     } = reg.body
 
 
     try {
+        const date = reg.query.date ??= new Date()
         await ProductPrice.create({
             price,
             date,

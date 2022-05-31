@@ -1,9 +1,9 @@
 const Dto = require('../dto/index')
-const {cartResponseToCartDto, cartItemDto} = require("../dto");
+const {cartDto, cartItemDto} = require("../dto");
 
 function cartResponseToCartDtoMapper(cartResponse) {
     let totalPrice = 0
-    return cartResponseToCartDto(
+    return cartDto(
         cartResponse.CartItems.map(cartItem => {
 
             const quantity = cartItem.dataValues.quantity
