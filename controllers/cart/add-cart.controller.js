@@ -1,22 +1,25 @@
-const { Cart } = require('../../database/models')
+const { Cart, User} = require('../../database/models')
 const { responseService, } = require('../../services')
 
 async function addCartController(reg, res) {
     const {
-        closed,
-        userId,
+        email,
     } = reg.body
 
 
     try {
-        await Cart.create({
-            closed,
-            userId,
+        await User.findOne({
+            where: {email: email}
         })
+            .then(async (user) => {
+                await Cart.create({
+                    userId: user.dataValues.id,
+                })
+            })
+
 
         responseService.sendSuccessResponse(res, {
-                closed,
-                userId,
+                email,
             },
             201,
         )

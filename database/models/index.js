@@ -56,6 +56,9 @@ StorageProductList.belongsTo(ProductAttribute, { foreignKey: 'product_attributes
 Storage.hasMany(StorageProductList, { foreignKey: 'storage_id' })
 StorageProductList.belongsTo(Storage, { foreignKey: 'storage_id' })
 
+Storage.hasMany(CartItem, { foreignKey: 'storage_id' })
+CartItem.belongsTo(Storage, { foreignKey: 'storage_id' })
+
 // product_attributes - orders M2M
 ProductAttribute.hasMany(OrderDetail, { foreignKey: 'product_attributes_id' })
 OrderDetail.belongsTo(ProductAttribute, { foreignKey: 'product_attributes_id' })
@@ -72,8 +75,8 @@ CartItem.belongsTo(ProductAttribute, { foreignKey: 'product_attributes_id' })
 //
 
 //
-Cart.hasMany(CartItem, { foreignKey: 'card_id' })
-CartItem.belongsTo(Cart, { foreignKey: 'card_id' })
+Cart.hasMany(CartItem, { foreignKey: 'cart_id' })
+CartItem.belongsTo(Cart, { foreignKey: 'cart_id' })
 //
 
 // orders - users M2O

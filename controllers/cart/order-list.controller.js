@@ -1,13 +1,14 @@
 const { Cart, User }  = require('../../database/models')
 const { responseService } = require('../../services')
 
-async function cartListController(reg, res) {
+async function orderListController(reg, res) {
     const {
         closed,
         userId,
     } = reg.query
 
     const result = await Cart.findAll({
+        where: {email: reg.params.email},
         include: User,
     })
 
@@ -17,4 +18,4 @@ async function cartListController(reg, res) {
     )
 }
 
-module.exports = cartListController
+module.exports = orderListController

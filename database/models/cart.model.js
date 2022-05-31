@@ -8,8 +8,8 @@ const Cart = sequelize.define('Cart', {
             autoIncrement: true,
         },
         closed: {
-            type: DataTypes.BOOLEAN,
-            allowNull: false,
+            type: DataTypes.DATE,
+            allowNull: true,
         },
         userId: {
             type: DataTypes.INTEGER,
