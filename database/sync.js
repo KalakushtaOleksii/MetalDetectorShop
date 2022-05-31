@@ -3,8 +3,6 @@ const CartItem = require("./models/cart-item.model");
 const Country = require("./models/country.model");
 const Frequency = require("./models/frequency.model");
 const FrequencyValue = require("./models/frequency_value.model");
-const Order = require("./models/order.model");
-const OrderDetail = require("./models/order-detail.model");
 const Product = require("./models/product.model");
 const ProductAttribute = require("./models/product-attribute.model");
 const ProductCategory = require("./models/product-category.model");
@@ -21,8 +19,6 @@ const User = require("./models/user.model");
         await Country.sync()
         await Frequency.sync()
         await FrequencyValue.sync()
-        await Order.sync()
-        await OrderDetail.sync()
         await Product.sync()
         await ProductAttribute.sync()
         await ProductCategory.sync()

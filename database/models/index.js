@@ -3,8 +3,6 @@ const CartItem = require('./cart-item.model')
 const Country = require('./country.model')
 const Frequency = require('./frequency.model')
 const FrequencyValue = require('./frequency_value.model')
-const Order = require('./order.model')
-const OrderDetail = require('./order-detail.model')
 const Product = require('./product.model')
 const ProductAttribute = require('./product-attribute.model')
 const ProductCategory = require('./product-category.model')
@@ -59,15 +57,6 @@ StorageProductList.belongsTo(Storage, { foreignKey: 'storage_id' })
 Storage.hasMany(CartItem, { foreignKey: 'storage_id' })
 CartItem.belongsTo(Storage, { foreignKey: 'storage_id' })
 
-// product_attributes - orders M2M
-ProductAttribute.hasMany(OrderDetail, { foreignKey: 'product_attributes_id' })
-OrderDetail.belongsTo(ProductAttribute, { foreignKey: 'product_attributes_id' })
-//
-
-//
-Order.hasMany(OrderDetail, { foreignKey: 'order_id' })
-OrderDetail.belongsTo(Order, { foreignKey: 'order_id' })
-//
 
 // product_attributes - cart M2M
 ProductAttribute.hasMany(CartItem, { foreignKey: 'product_attributes_id' })
@@ -79,10 +68,7 @@ Cart.hasMany(CartItem, { foreignKey: 'cart_id' })
 CartItem.belongsTo(Cart, { foreignKey: 'cart_id' })
 //
 
-// orders - users M2O
-User.hasMany(Order, { foreignKey: 'user_id' })
-Order.belongsTo(User, { foreignKey: 'user_id' })
-//
+
 
 // cart - users M2O
 User.hasMany(Cart, { foreignKey: 'user_id' })
@@ -96,8 +82,6 @@ module.exports = {
     Country,
     Frequency,
     FrequencyValue,
-    Order,
-    OrderDetail,
     Product,
     ProductAttribute,
     ProductCategory,

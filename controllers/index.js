@@ -9,7 +9,6 @@ const storageControllers = require('./storage')
 const storageProductListControllers = require('./storage_product_list')
 const productAttributesControllers = require('./product_attributes')
 const productPriceListControllers = require('./product_price')
-const orderControllers = require('./order')
 const orderDetailsControllers = require('./order_details')
 const cartControllers = require('./cart')
 const cartItemControllers = require('./cart_item')
@@ -26,7 +25,6 @@ module.exports = {
     ...storageProductListControllers,
     ...productAttributesControllers,
     ...productPriceListControllers,
-    ...orderControllers,
     ...orderDetailsControllers,
     ...cartControllers,
     ...cartItemControllers,

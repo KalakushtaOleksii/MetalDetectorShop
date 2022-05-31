@@ -1,0 +1,18 @@
+head
+    title Cart List
+body
+    h1 Cart List
+    table(border=1, cellpadding=6)
+        thead
+            tr
+                th Name
+                th Quantity
+                th Price
+        tbody
+            each item in cartItems
+                tr
+                    td= item.name
+                    td= item.quantity
+                    td= item.price
+
+    p Total price: #{totalPrice}

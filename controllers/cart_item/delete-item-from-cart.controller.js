@@ -33,7 +33,6 @@ async function deleteItemFromCartController(reg, res) {
             })
     }
 
-
     responseService.sendSuccessResponse(
         res,
         "Ok",
