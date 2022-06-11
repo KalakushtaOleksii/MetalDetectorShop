@@ -11,6 +11,7 @@ const Storage = require("./models/storage.model");
 const StorageProductList = require("./models/storage-product-list.model");
 const Trademark = require("./models/trademark.model");
 const User = require("./models/user.model");
+const Token = require('./models/token.model')
 
 ;(
     async () => {
@@ -27,5 +28,6 @@ const User = require("./models/user.model");
         await StorageProductList.sync()
         await Trademark.sync()
         await User.sync()
+        await Token.sync()
     }
 )()

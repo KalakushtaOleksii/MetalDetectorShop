@@ -1,5 +1,5 @@
 const Dto = require('../dto/index')
-const {cartDto, cartItemDto} = require("../dto");
+const {cartDto, cartItemDto} = require("../dto")
 
 function cartResponseToCartDtoMapper(cartResponse) {
     let totalPrice = 0

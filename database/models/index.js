@@ -11,6 +11,7 @@ const Storage = require('./storage.model')
 const StorageProductList = require('./storage-product-list.model')
 const Trademark = require('./trademark.model')
 const User = require('./user.model')
+const Token = require('./token.model')
 
 // product_attributes - product M2O
 Product.hasMany(ProductAttribute, { foreignKey: 'product_id' })
@@ -51,12 +52,15 @@ ProductAttribute.hasMany(StorageProductList, { foreignKey: 'product_attributes_i
 StorageProductList.belongsTo(ProductAttribute, { foreignKey: 'product_attributes_id'})
 //
 
+//
 Storage.hasMany(StorageProductList, { foreignKey: 'storage_id' })
 StorageProductList.belongsTo(Storage, { foreignKey: 'storage_id' })
+//
 
+//
 Storage.hasMany(CartItem, { foreignKey: 'storage_id' })
 CartItem.belongsTo(Storage, { foreignKey: 'storage_id' })
-
+//
 
 // product_attributes - cart M2M
 ProductAttribute.hasMany(CartItem, { foreignKey: 'product_attributes_id' })
@@ -68,11 +72,14 @@ Cart.hasMany(CartItem, { foreignKey: 'cart_id' })
 CartItem.belongsTo(Cart, { foreignKey: 'cart_id' })
 //
 
-
-
 // cart - users M2O
 User.hasMany(Cart, { foreignKey: 'user_id' })
 Cart.belongsTo(User, { foreignKey: 'user_id' })
+//
+
+// token - users M2O
+User.hasMany(Token, { foreignKey: 'user_id' })
+Token.belongsTo(User, { foreignKey: 'user_id' })
 //
 
 
@@ -90,4 +97,5 @@ module.exports = {
     StorageProductList,
     Trademark,
     User,
+    Token,
 }

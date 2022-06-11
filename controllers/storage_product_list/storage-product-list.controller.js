@@ -17,7 +17,7 @@ async function getProductListByStorageController(reg, res) {
         quantity,
     } = reg.query
 
-    const lim = 2
+    const lim = 10
     const page = reg.query.page ??= 1
     let date
     if (reg.query.date)
@@ -27,7 +27,7 @@ async function getProductListByStorageController(reg, res) {
     const result =(await StorageProductList.findAll({
         where: {
             storage_id: reg.params.id,
-            quantity: {[Op.gt]: 1},
+            quantity: {[Op.gte]: 1},
         },
         include: [{
             model:ProductAttribute,

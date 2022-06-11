@@ -2,6 +2,7 @@ const { User } = require('../../database/models')
 const  md5 = require('md5')
 const { responseService, } = require('../../services')
 
+
 async function signUpController(reg, res) {
     const {
         firstName,
@@ -19,6 +20,7 @@ async function signUpController(reg, res) {
             email,
             password: md5(password),
         })
+
 
         responseService.sendSuccessResponse(res,
             {

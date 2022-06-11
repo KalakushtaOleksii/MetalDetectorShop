@@ -18,6 +18,8 @@ const port = 3003
 app.set('views', './views')
 app.set('view engine', 'pug')
 
+//const jwt = require('jsonwebtoken')
+
 const bodyParser = require('body-parser');
 
 app.use(bodyParser.urlencoded());

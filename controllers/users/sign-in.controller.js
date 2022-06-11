@@ -12,7 +12,7 @@ async function signInController(req, res) {
         where: {
             email,
             password: md5(password),
-        }
+        },
     })
 
     if (result === null) {
