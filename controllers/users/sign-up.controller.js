@@ -21,7 +21,6 @@ async function signUpController(reg, res) {
             password: md5(password),
         })
 
-
         responseService.sendSuccessResponse(res,
             {
                 firstName,
