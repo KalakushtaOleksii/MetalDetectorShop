@@ -11,6 +11,7 @@ async function addCartItemController(reg, res) {
 
 
     try {
+        //TODO - change email to user token
         const cartId = await User.findOne({
             where: {email: email}
         })
@@ -41,6 +42,7 @@ async function addCartItemController(reg, res) {
         let result
 
         if (!attributes || attributes.dataValues.quantity < quantity) {
+            //TODO - change to status(..).json()
             responseService.sendErrorResponse(res, "Not enough products in storage")
         } else {
             result = await CartItem.create({
@@ -57,6 +59,7 @@ async function addCartItemController(reg, res) {
             201,
         )
     } catch (e) {
+        //TODO - change to status(..).json()
         responseService.sendErrorResponse(res, e)
     }
 }

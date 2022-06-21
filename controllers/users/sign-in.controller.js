@@ -15,7 +15,9 @@ async function signInController(req, res) {
         },
     })
 
+    // TODO - return user token
     if (result === null) {
+        //TODO - change to status(..).json()
         responseService.sendErrorResponse(
             res,
             'Invalid password or email',

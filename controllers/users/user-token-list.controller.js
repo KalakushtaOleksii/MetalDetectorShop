@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken')
 const md5 = require("md5");
 
 
-
+//TODO - make correct naming
 async function userTokenListController(reg, res){
    try {
        const result = await User.findOne({

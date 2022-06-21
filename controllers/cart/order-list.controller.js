@@ -7,21 +7,10 @@ const {sequelize} = require("../../database");
 
 
 async function orderListController(reg, res) {
-    const {
-        email
-    } = reg.body
-
-    const user = await User.findOne({
-            where: {email: email}
-        })
-
-        if (!user) {
-            responseService.sendErrorResponse(res, "User not exist")
-        } else {
             const date = new Date()
             const orders = await Cart.findAll({
                 where: {
-                    user_id: user.dataValues.id,
+                    user_id: reg.user.id, //user.dataValues.id,
                     closed: {[Op.not]: null}
                 },
                 include: [
@@ -46,11 +35,7 @@ async function orderListController(reg, res) {
                     }
                 ]
             })
-            res.render('get-order-list', orderResponseToOrderDtoMapper(email, orders))
-
-
-        //responseService.sendSuccessResponse(res, orderResponseToOrderDtoMapper(email, orders))
-    }
+            res.render('get-order-list', orderResponseToOrderDtoMapper(reg.user.email, orders))
 }
 
 module.exports = orderListController

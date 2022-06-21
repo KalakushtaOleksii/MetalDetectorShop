@@ -18,6 +18,7 @@ async function deleteItemFromCartController(reg, res) {
     })
 
     if (!item || item.dataValues.quantity < quantity) {
+        //TODO - change to status(..).json()
         responseService.sendErrorResponse(res, "You can't delete more than you added")
     } else if (item.dataValues.quantity === quantity) {
         await CartItem.destroy({

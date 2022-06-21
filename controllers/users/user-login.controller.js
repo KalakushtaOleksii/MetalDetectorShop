@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken')
 const md5 = require("md5");
 const { accessTokenSecret } = require('../../configs/token-configs')
 
-
+//TODO - delete
 async function userLoginController(reg, res){
     const {email,
         password,

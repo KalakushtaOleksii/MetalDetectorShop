@@ -13,7 +13,7 @@ function initUserRoutes(app) {
 
     app.post('/login', userLoginController)
 
-    app.get('/token-user', getUserTokenMiddleware, userTokenListController)
+    app.get('/me', getUserTokenMiddleware, userTokenListController)
 }
 
 module.exports = initUserRoutes

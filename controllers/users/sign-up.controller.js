@@ -21,6 +21,8 @@ async function signUpController(reg, res) {
             password: md5(password),
         })
 
+        //TODO - return user token
+
         responseService.sendSuccessResponse(res,
             {
                 firstName,
@@ -31,6 +33,7 @@ async function signUpController(reg, res) {
             201,
         )
     } catch (e) {
+        //TODO - change to status(..).json()
         responseService.sendErrorResponse(res, e)
     }
 }

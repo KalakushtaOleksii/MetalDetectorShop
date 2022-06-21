@@ -7,11 +7,13 @@ async function getCartController(reg, res){
         email,
     } = reg.body
 
+    //TODO - change email to user token
     const user = await User.findOne({
         where: {email: email}
     })
 
     if (!user) {
+        //TODO - change to status(..).json()
         responseService.sendErrorResponse(res, "User not exist")
     } else {
         const cart = await Cart.findOne({

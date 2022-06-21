@@ -15,6 +15,7 @@ async function closeCartController (reg, res){
     })
 
     if (!cart) {
+        //TODO - change to status(..).json()
         responseService.sendErrorResponse(res, "Cart is not exist or already closed")
     } else {
         for (const cartItem of cart.CartItems) {
@@ -25,6 +26,7 @@ async function closeCartController (reg, res){
                 }
             })
             if (!storageItem || storageItem.dataValues.quantity < cartItem.dataValues.quantity) {
+                //TODO - change to status(..).json()
                 responseService.sendErrorResponse(res, "Not enough products in the store")
                 break
             }

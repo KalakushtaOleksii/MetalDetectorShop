@@ -18,6 +18,7 @@ async function addFrequencyController(reg, res) {
             201,
         )
     } catch (e) {
+        //TODO - change to status(..).json()
         responseService.sendErrorResponse(res, e)
     }
 }
