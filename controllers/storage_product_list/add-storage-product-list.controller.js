@@ -23,8 +23,8 @@ async function addStorageProductListController(reg, res) {
             201,
         )
     } catch (e) {
-        //TODO - change to status(..).json()
-        responseService.sendErrorResponse(res, e)
+        console.log(e)
+        return res.status(400).json({message:'Кількість продукту не добавлено'})
     }
 }
 

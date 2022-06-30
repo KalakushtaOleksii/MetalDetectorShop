@@ -1,6 +1,8 @@
 const { User } = require('../../database/models')
 const  md5 = require('md5')
 const { responseService, } = require('../../services')
+const jwt = require("jsonwebtoken");
+const {accessTokenSecret} = require("../../configs/token-configs");
 
 
 async function signUpController(reg, res) {
@@ -21,20 +23,31 @@ async function signUpController(reg, res) {
             password: md5(password),
         })
 
-        //TODO - return user token
 
-        responseService.sendSuccessResponse(res,
-            {
-                firstName,
-                lastName,
-                dateOfBirth,
+        const result = await User.findOne({
+            where: {
                 email,
+                password: md5(password),
             },
-            201,
-        )
+        })
+
+       if (result){
+            const accessToken = await jwt.sign({
+                id: result.id,
+                email: result.email,
+                password: result.password,
+            }, accessTokenSecret, { expiresIn: '24h' })
+
+            res.json({
+                accessToken
+            })
+        } else {
+            res.send('Email or password incorrect')
+           return res.status(400).json({message:'Email or password incorrect'})
+        }
+
     } catch (e) {
-        //TODO - change to status(..).json()
-        responseService.sendErrorResponse(res, e)
+        return res.status(400).json({message:'Email or password incorrect'})
     }
 }
 

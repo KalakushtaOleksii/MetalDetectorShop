@@ -1,12 +1,14 @@
 const { User } = require('../../database/models')
 const { responseService } = require('../../services')
 const md5 = require('md5')
+const jwt = require("jsonwebtoken");
+const {accessTokenSecret} = require("../../configs/token-configs");
 
 async function signInController(req, res) {
     const {
         email,
         password,
-    } = req.query
+    } = req.body
 
     const result = await User.findOne({
         where: {
@@ -15,21 +17,19 @@ async function signInController(req, res) {
         },
     })
 
-    // TODO - return user token
-    if (result === null) {
-        //TODO - change to status(..).json()
-        responseService.sendErrorResponse(
-            res,
-            'Invalid password or email',
-        )
+    if (result){
+        const accessToken = jwt.sign({
+            id: result.id,
+            email: result.email,
+            password: result.password,
+        }, accessTokenSecret, { expiresIn: '24h' })
 
-        return
+        res.json({
+            accessToken
+        })
+    } else {
+        return res.status(400).json({message:'Email or password incorrect'})
     }
-
-    responseService.sendSuccessResponse(
-        res,
-        result,
-    )
 }
 
 module.exports = signInController

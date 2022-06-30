@@ -10,7 +10,7 @@ async function orderListController(reg, res) {
             const date = new Date()
             const orders = await Cart.findAll({
                 where: {
-                    user_id: reg.user.id, //user.dataValues.id,
+                    user_id: reg.user.id,
                     closed: {[Op.not]: null}
                 },
                 include: [

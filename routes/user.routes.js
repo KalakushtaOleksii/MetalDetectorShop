@@ -9,7 +9,7 @@ const getUserTokenMiddleware = require('../middlewaress/get-user-token.middlewar
 function initUserRoutes(app) {
     app.post('/sign-up', signUpController)
 
-    app.get('/sign-in', signInController)
+    app.post('/sign-in', signInController)
 
     app.post('/login', userLoginController)
 

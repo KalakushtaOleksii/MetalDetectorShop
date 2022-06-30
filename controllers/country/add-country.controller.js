@@ -18,8 +18,7 @@ async function addCountryController(reg, res) {
             201,
         )
     } catch (e) {
-        //TODO - change to status(..).json()
-        responseService.sendErrorResponse(res, e)
+             return res.status(400).json({message:'Країна не добавлена'})
     }
 }
 
